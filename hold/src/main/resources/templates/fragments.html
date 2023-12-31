@@ -1,0 +1,64 @@
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>hold</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .container {
+            max-width: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Noto Sans KR", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+        body,
+        input,
+        button,
+        select,
+        optgroup,
+        textarea {
+            font-family: -apple-system, BlinkMacSystemFont, "Noto Sans KR", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+        .nav-custom {
+            background-color: #659F7C;
+        }
+        .navbar-nav {
+            float: right;
+        }
+    </style>
+
+    <!-- nav -->
+    <nav th:fragment="main-nav" class="navbar navbar-expand-sm nav-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand ms-2" href="/" th:href="@{/}">
+                <img src="/images/logo.png" width="60" height="20">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse show" id="navbarCollapse" style="">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" th:href="@{/login}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" th:href="@{/sign-up}">Signup</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- footer -->
+    <footer th:fragment="main-footer" class="text-center text-lg-start">
+        <div class="text-center p-3">
+            <hr>
+            © 2024 Chanho's Project
+            <br>
+            <a class="text-dark" href="https://github.com/chanhocode">Visit my Git</a>
+        </div>
+    </footer>
+</head>
