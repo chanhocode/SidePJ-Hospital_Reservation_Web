@@ -6,6 +6,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Getter @Setter @Builder @EqualsAndHashCode(of = "id")
@@ -28,7 +29,7 @@ public class Account {
 
     private boolean emailVerified; // 이메일 인증
 
-    private  String emailCheckToken;
+    private String emailCheckToken;
 
     private LocalDateTime joinedAt;
 
@@ -47,4 +48,7 @@ public class Account {
     @ManyToMany
     private Set<Nutrient> nutrients = new HashSet<>(); // 영양제
 
+    public void generateEmailCheckToken() {
+        this.emailCheckToken = UUID.randomUUID().toString();
+    }
 }

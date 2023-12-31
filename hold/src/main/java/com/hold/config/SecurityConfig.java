@@ -17,14 +17,8 @@ public class SecurityConfig{
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests((authorizeRequests) -> {
-                    authorizeRequests.requestMatchers("/", "/login", "/sign-up").permitAll();
+                    authorizeRequests.requestMatchers("/", "/login", "/signup", "/checkEmailToken").permitAll();
                     authorizeRequests.anyRequest().authenticated();
-                })
-                .formLogin((loginRequests) -> {
-                    loginRequests.loginPage("/login").permitAll();
-                })
-                .logout((logoutRequests)->{
-                    logoutRequests.logoutSuccessUrl("/");
                 })
                 .build();
     }

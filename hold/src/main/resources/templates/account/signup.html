@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html :: head"></head>
+<body>
+<div th:replace="fragments.html :: main-nav"></div>
+
+
+<div class="container mt-4">
+    <h2>회원가입</h2>
+    <form class="needs-validation" th:action="@{/signup}" th:object="${signUpForm}" method="post">
+        <div class="form-group mb-3">
+            <label for="email" class="form-label">이메일</label>
+            <input type="email" th:field="*{email}" class="form-control" id="email" name="email" required>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</small>
+        </div>
+        <div class="form-group mb-3">
+            <label for="password" class="form-label">비밀번호</label>
+            <input type="password" th:field="*{password}" class="form-control" id="password" name="password" required minlength="8" maxlength="100">
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</small>
+        </div>
+        <div class="form-group mb-3">
+            <label for="confirmPassword" class="form-label">비밀번호 확인</label>
+            <input type="password" th:field="*{password}" class="form-control" id="confirmPassword" name="confirmPassword" required minlength="8" maxlength="100">
+        </div>
+        <div class="form-group mb-3">
+            <label for="name" class="form-label">이름</label>
+            <input type="text" th:field="*{name}" class="form-control" id="name" name="name" maxlength="20" required>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name Error</small>
+
+        </div>
+        <div class="form-group mb-3">
+            <label for="phone" class="form-label">휴대폰 번호</label>
+            <input type="tel" th:field="*{phoneNum}" class="form-control" id="phone" name="phone"  required>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('phoneNum')}" th:errors="*{phoneNum}">phoneNum Error</small>
+        </div>
+
+
+        <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit"
+                    aria-describedby="submitHelp">가입하기</button>
+            <small id="submitHelp" class="form-text text-muted">
+                <a href="#">약관</a>에 동의하시면 가입하기 버튼을 클릭하세요.
+            </small>
+        </div>
+
+    </form>
+</div>
+
+<script type="application/javascript">
+    (function () {
+        'use strict';
+
+        window.addEventListener('load', function () {
+            var forms = document.getElementsByClassName('needs-validation');
+
+            Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        }, false)
+    }())
+</script>
+
+<div th:replace="fragments.html :: main-footer"></div>
+</body>
+</html>
